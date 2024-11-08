@@ -1,0 +1,105 @@
+sql cmds:
+
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    role ENUM('admin', 'student') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    profile_details JSON,
+    eligibility_status BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+-- Creating the student_academics table
+CREATE TABLE student_academics (
+    academic_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT UNIQUE, -- Ensures one-to-one relationship with students
+    live_backlogs INT DEFAULT 0,
+    dead_backlogs INT DEFAULT 0,
+    cgpa DECIMAL(4, 2) CHECK (cgpa BETWEEN 0 AND 10),
+    percentage_10th DECIMAL(5, 2) CHECK (percentage_10th BETWEEN 0 AND 100),
+    percentage_12th DECIMAL(5, 2) CHECK (percentage_12th BETWEEN 0 AND 100),
+    branch_name VARCHAR(50) NOT NULL,
+    has_internship BOOLEAN DEFAULT FALSE, -- Indicates if the student has an internship
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+
+-- Updated companies table
+CREATE TABLE companies (
+    company_id INT PRIMARY KEY AUTO_INCREMENT,
+    company_name VARCHAR(100) NOT NULL,
+    contact_person VARCHAR(100),
+    contact_email VARCHAR(100),
+    details TEXT,
+    stipend DECIMAL(10, 2), -- Stipend offered by the company
+    eligible_branches VARCHAR(255), -- Comma-separated list of eligible branches
+    location VARCHAR(100), -- Location of the company
+    schedule_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Applications table to track students applying to companies
+CREATE TABLE applications (
+    application_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    company_id INT,
+    application_status ENUM('applied', 'interview_scheduled', 'accepted', 'rejected') DEFAULT 'applied',
+    selected BOOLEAN DEFAULT FALSE, -- Indicates if the student has been selected
+    applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (company_id) REFERENCES companies(company_id)
+);
+
+
+CREATE TABLE forum_posts (
+    post_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    post_title VARCHAR(150),
+    post_content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE forum_replies (
+    reply_id INT PRIMARY KEY AUTO_INCREMENT,
+    post_id INT,
+    user_id INT,
+    reply_content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES forum_posts(post_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+CREATE TABLE company_schedules (
+    schedule_id INT PRIMARY KEY AUTO_INCREMENT,
+    company_id INT,
+    test_date TIMESTAMP,
+    interview_date TIMESTAMP,
+    FOREIGN KEY (company_id) REFERENCES companies(company_id)
+);
+
+
+CREATE TABLE groups (
+    group_id INT PRIMARY KEY AUTO_INCREMENT,
+    group_name VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE group_members (
+    group_member_id INT PRIMARY KEY AUTO_INCREMENT,
+    group_id INT,
+    student_id INT,
+    FOREIGN KEY (group_id) REFERENCES groups(group_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
