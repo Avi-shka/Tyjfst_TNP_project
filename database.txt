@@ -1,0 +1,25 @@
+-- Use the database 'p'
+USE p;
+
+-- Create the companies table
+CREATE TABLE companies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    stipend VARCHAR(100),
+    location VARCHAR(100),
+    branch VARCHAR(100),
+    cgpa_criteria DECIMAL(3, 2)
+);
+
+-- Insert dummy data into the companies table
+INSERT INTO companies (name, stipend, location, branch, cgpa_criteria) VALUES
+('Tech Innovators Inc.', '₹50,000', 'Bangalore', 'Computer Science', 7.50),
+('Future Tech Solutions', '₹45,000', 'Pune', 'Information Technology', 7.80),
+('Global Enterprises Ltd.', '₹60,000', 'Mumbai', 'Mechanical', 8.00),
+('Startup Labs', '₹30,000', 'Delhi', 'Electronics & Communication', 6.50),
+('Visionary Ventures', '₹55,000', 'Chennai', 'Computer Science', 7.00),
+('CloudWorks Technologies', '₹50,000', 'Hyderabad', 'Information Technology', 7.20),
+('Innovative Systems Pvt. Ltd.', '₹65,000', 'Bangalore', 'Mechanical', 8.10),
+('SmartTech Solutions', '₹40,000', 'Noida', 'Electronics & Communication', 7.00),
+('TechnoVision Inc.', '₹70,000', 'Mumbai', 'Computer Science', 8.50),
+('AI & Robotics Corp.', '₹75,000', 'Chennai', 'Information Technology', 8.20);
