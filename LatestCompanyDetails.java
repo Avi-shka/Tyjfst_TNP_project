@@ -1,3 +1,6 @@
+//displaying all companies 
+
+
 package eg_13;
 
 import javax.servlet.*;
