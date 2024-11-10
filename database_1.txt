@@ -1,0 +1,19 @@
+USE p;
+
+CREATE TABLE company_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,  -- Auto-incremented ID for each company
+    name VARCHAR(255) NOT NULL,          -- Company name
+    stipend VARCHAR(100),                -- Stipend information
+    location VARCHAR(255),               -- Location of the company
+    cgpa_criteria VARCHAR(50),           -- CGPA criteria for students
+    event_date DATE                      -- Date of the event, used for upcoming companies
+);
+
+
+INSERT INTO company_details (name, stipend, location, cgpa_criteria, event_date)
+VALUES
+('Company A', '50000', 'New York', '8.0', '2024-12-15'),
+('Company B', '60000', 'San Francisco', '7.5', '2024-11-30'),
+('Company C', '55000', 'Chicago', '8.5', '2024-11-01'),
+('Company D', '70000', 'Boston', '8.2', '2025-01-10'),
+('Company E', '45000', 'Los Angeles', '7.0', '2024-10-05');
