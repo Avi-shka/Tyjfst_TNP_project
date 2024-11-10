@@ -38,13 +38,10 @@ CREATE TABLE student_academics (
 CREATE TABLE companies (
     company_id INT PRIMARY KEY AUTO_INCREMENT,
     company_name VARCHAR(100) NOT NULL,
-    contact_person VARCHAR(100),
-    contact_email VARCHAR(100),
     details TEXT,
     stipend DECIMAL(10, 2), -- Stipend offered by the company
     eligible_branches VARCHAR(255), -- Comma-separated list of eligible branches
     location VARCHAR(100), -- Location of the company
-    schedule_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
