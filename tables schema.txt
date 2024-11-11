@@ -30,19 +30,45 @@ CREATE TABLE student_academics (
     percentage_12th DECIMAL(5, 2) CHECK (percentage_12th BETWEEN 0 AND 100),
     branch_name VARCHAR(50) NOT NULL,
     has_internship BOOLEAN DEFAULT FALSE, -- Indicates if the student has an internship
+    profile_picture BLOB, -- Field for storing profile picture
+    contact_no VARCHAR(15), -- Field for storing contact number
     FOREIGN KEY (student_id) REFERENCES students(student_id)
 );
+
 
 
 -- Updated companies table
 CREATE TABLE companies (
     company_id INT PRIMARY KEY AUTO_INCREMENT,
     company_name VARCHAR(100) NOT NULL,
+    contact_person VARCHAR(100),
+    contact_email VARCHAR(100),
     details TEXT,
     stipend DECIMAL(10, 2), -- Stipend offered by the company
     eligible_branches VARCHAR(255), -- Comma-separated list of eligible branches
     location VARCHAR(100), -- Location of the company
+    schedule_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+//added 
+
+ALTER TABLE companies
+ADD COLUMN company_image VARCHAR(255);
+
+
+//schedule
+
+CREATE TABLE schedule (
+    schedule_id INT PRIMARY KEY AUTO_INCREMENT,
+    schedule_date DATE NOT NULL,
+    schedule_time TIME NOT NULL,
+    venue VARCHAR(100) NOT NULL,
+    company_id INT NOT NULL,
+    event VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (company_id) REFERENCES companies(company_id)
 );
 
 -- Applications table to track students applying to companies
@@ -100,3 +126,19 @@ CREATE TABLE group_members (
     FOREIGN KEY (group_id) REFERENCES groups(group_id),
     FOREIGN KEY (student_id) REFERENCES students(student_id)
 );
+
+
+//dummy data
+
+INSERT INTO companies (company_name, stipend, location, cgpa_criteria, details, eligible_branches, schedule_date) VALUES
+('Tech Innovators Inc.', 50000, 'Bangalore' , 7.50, 'Leading tech company', 'Computer Science, Information Technology', '2023-04-01'),
+('Future Tech Solutions', 45000, 'Pune',7.80, 'Innovative IT solutions provider', 'Information Technology, Electronics', '2023-04-02'),
+('Global Enterprises Ltd.', 60000, 'Mumbai',8.00, 'Global leader in mechanical engineering', 'Mechanical, Civil', '2023-04-03'),
+('Startup Labs', 30000, 'Delhi',6.50, 'Exciting startup in electronics', 'Electronics & Communication, Computer Science', '2023-04-04'),
+('Visionary Ventures', 55000, 'Chennai', 7.00, 'Visionary tech ventures', 'Computer Science, Information Technology', '2023-04-05'),
+('CloudWorks Technologies', 50000, 'Hyderabad',  7.20, 'Cloud technology experts', 'Information Technology, Electronics', '2023-04-06'),
+('Innovative Systems Pvt. Ltd.', 65000, 'Bangalore',  8.10, 'Innovative mechanical systems', 'Mechanical, Civil', '2023-04-07'),
+('SmartTech Solutions', 40000, 'Noida',  7.00, 'Smart technology solutions', 'Electronics & Communication, Computer Science', '2023-04-08'),
+('TechnoVision Inc.', 70000, 'Mumbai',  8.50, 'Visionary tech company', 'Computer Science, Information Technology', '2023-04-09'),
+('AI & Robotics Corp.', 75000, 'Chennai',  8.20, 'AI and robotics experts', 'Information Technology, Electronics', '2023-04-10');
+
