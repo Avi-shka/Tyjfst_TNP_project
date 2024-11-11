@@ -1,0 +1,40 @@
+/* Homepage Specific Styles */
+
+/* Background Image and Full Page Styling */
+.homepage {
+  background-image: url('C:/Users/nvs20/Desktop/JFST/reactunit3/typroject1/my-app/public/assets/coll.png'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+/* Background Image and Full Page Styling */
+
+/* Content Styling */
+.content {
+text-align: center;
+margin-top: 150px;
+}
+
+/* Transparent Gray Box */
+.content-box {
+background-color: rgba(128, 128, 128, 0.7); /* Semi-transparent gray background */
+padding: 20px 40px;
+border-radius: 8px; /* Optional: rounds the corners */
+max-width: 600px;
+margin: 0 auto;
+}
+
+/* Heading and Paragraph Styling */
+.content-box h1 {
+font-size: 3rem;
+margin: 0;
+}
+
+.content-box p {
+font-size: 1.2rem;
+margin: 10px 0 0;
+}

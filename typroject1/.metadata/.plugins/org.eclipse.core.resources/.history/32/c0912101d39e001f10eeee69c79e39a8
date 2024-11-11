@@ -1,0 +1,47 @@
+package com.example;
+
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Databaseconnection {
+	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+	static final String URL = "jdbc:mysql://localhost:3306/dbml";
+	static final String USER = "root";
+	static final String PASS = "Mysql@123";
+	Connection conn = null;
+	
+	 public List<Company> getAllCompanies() {
+	        List<Company> companies = new ArrayList<>();
+	        String query = "SELECT * FROM companies";
+
+	        try {
+	        		Class.forName(JDBC_DRIVER);
+	        		conn=DriverManager.getConnection(URL,USER,PASS);
+	        		System.out.println("Welcome to Books Database");
+	        		
+	             PreparedStatement statement = conn.prepareStatement(query);
+	             ResultSet resultSet = statement.executeQuery() ;
+
+	            while (resultSet.next()) {
+	                Company company = new Company();
+	                company.setId(resultSet.getInt("id")); 
+	                company.setCategory(resultSet.getString("category"));
+	                company.setPrice(resultSet.getDouble("price"));
+	                company.setStocked(resultSet.getBoolean("stocked"));
+	                company.setName(resultSet.getString("name")); 
+	                companies.add(company);
+	            }
+	        } 
+	        catch(ClassNotFoundException e) {
+	    		e.printStackTrace();
+	    	}
+	        catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+
+	        return companies;
+	    }
+	 }
+
