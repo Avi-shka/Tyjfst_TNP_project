@@ -27,3 +27,5 @@ activities and enhances communication between students
  RESTful APIs, our T&P Cell website delivers an efficient,
  data-driven solution for enhancing career support and
  connectivity.
+ ![Home Page](Screenshot 2024-12-27 190306.png)
+
