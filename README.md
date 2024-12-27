@@ -4,6 +4,8 @@
 # Java full stack project : MySQL, servlets, JSP, JDBC
 
 # Abstract
+
+![Home Page](Screenshot 2024-12-27 190306.png)
  Our Training and Placement (T&P) Cell website is a
  comprehensive platform designed to streamline campus
  recruitment and student placement processes. Built using a
@@ -27,5 +29,6 @@ activities and enhances communication between students
  RESTful APIs, our T&P Cell website delivers an efficient,
  data-driven solution for enhancing career support and
  connectivity.
- ![Home Page](Screenshot 2024-12-27 190306.png)
+ 
+ 
 
