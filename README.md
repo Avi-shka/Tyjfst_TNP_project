@@ -1,6 +1,6 @@
 # Tyjfst_TNP_project
 # Training and placement 
-
+![Home Page](images/mainpage.png)
 # Java full stack project : MySQL, servlets, JSP, JDBC
 
 # Abstract
