@@ -5,7 +5,7 @@
 
 # Abstract
 
-![Home Page](Screenshot 2024-12-27 190306.png)
+![Home Page](images/homepage.png)
  Our Training and Placement (T&P) Cell website is a
  comprehensive platform designed to streamline campus
  recruitment and student placement processes. Built using a
@@ -29,6 +29,8 @@ activities and enhances communication between students
  RESTful APIs, our T&P Cell website delivers an efficient,
  data-driven solution for enhancing career support and
  connectivity.
+ # Admin Dashboard
+ ![Admin Page](images/admindash.png)
  
  
 
