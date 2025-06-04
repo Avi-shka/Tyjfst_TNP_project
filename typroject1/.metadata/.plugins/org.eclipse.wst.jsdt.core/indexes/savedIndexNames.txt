@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\nvs20\Desktop\JFST\reactunit3\typroject1\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3288669266.index
+3438872132.index
+3695956868.index
+254189987.index
+1483266028.index
+1165995461.index
